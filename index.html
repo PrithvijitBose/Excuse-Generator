@@ -1,0 +1,3572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExcuseForge - Ultimate Professional Excuse Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Colors */
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --primary-light: #60a5fa;
+            --secondary: #8b5cf6;
+            --secondary-dark: #7c3aed;
+            --accent: #10b981;
+            --accent-light: #34d399;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --success: #22c55e;
+            
+            /* Light Theme Backgrounds */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --bg-card: #ffffff;
+            --bg-overlay: rgba(17, 24, 39, 0.8);
+            
+            /* Light Theme Text */
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-tertiary: #6b7280;
+            --text-light: #9ca3af;
+            --text-white: #ffffff;
+            
+            /* Light Theme Borders & Shadows */
+            --border-color: #e5e7eb;
+            --border-light: #f3f4f6;
+            --shadow-color: rgba(17, 24, 39, 0.1);
+            --shadow-strong: rgba(17, 24, 39, 0.25);
+            
+            /* Neutral Colors */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(229, 231, 235, 0.8);
+            --glass-shadow: 0 8px 32px rgba(17, 24, 39, 0.1);
+            
+            /* Shadows */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Transitions */
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            /* Dark Theme Backgrounds */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-card: #1e293b;
+            --bg-overlay: rgba(15, 23, 42, 0.9);
+            
+            /* Dark Theme Text */
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --text-light: #64748b;
+            
+            /* Dark Theme Borders & Shadows */
+            --border-color: #334155;
+            --border-light: #475569;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-strong: rgba(0, 0, 0, 0.5);
+            
+            /* Dark Theme Glass Effects */
+            --glass-bg: rgba(30, 41, 59, 0.95);
+            --glass-border: rgba(51, 65, 85, 0.8);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* Update shadows for dark theme */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            transition: var(--transition-slow);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-logo {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            animation: logoFloat 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .loading-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-align: center;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.3); }
+        }
+
+        .loading-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .loading-progress {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
+            border-radius: 3px;
+            width: 0%;
+            animation: loadingProgress 3s ease-out forwards;
+        }
+
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            20% { width: 30%; }
+            50% { width: 60%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-align: center;
+            animation: loadingTextFade 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loadingTextFade {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Animated Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            animation: backgroundShift 20s ease-in-out infinite;
+            z-index: -1;
+            transition: var(--transition-slow);
+        }
+
+        [data-theme="dark"] body::before {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition-slow);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition-slow);
+            opacity: 0;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo-icon:hover::before {
+            opacity: 1;
+            animation: shimmer 0.6s ease-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            transition: var(--transition);
+        }
+
+        .logo-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .theme-toggle:hover::before {
+            opacity: 0.1;
+        }
+
+        .theme-toggle i {
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover i {
+            transform: rotate(180deg);
+        }
+
+        .header-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .header-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-btn:hover::before {
+            left: 100%;
+        }
+
+        .header-btn.primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-color: var(--primary);
+            color: var(--text-white);
+        }
+
+        .header-btn.primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr 320px;
+            gap: 2rem;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            transition: var(--transition-slow);
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .category-item {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .category-item:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-light);
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .category-item:hover::before {
+            left: 100%;
+        }
+
+        .category-item.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--text-white);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateX(8px);
+        }
+
+        .category-icon {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .category-item:hover .category-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            transition: var(--transition);
+        }
+
+        .category-count {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: var(--transition-bounce);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: var(--transition-slow);
+            border: 1px solid var(--border-color);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            transition: var(--transition-slow);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Excuse Display */
+        .excuse-display {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 3rem 2rem;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: var(--transition-slow);
+        }
+
+        .excuse-display.has-content {
+            border-style: solid;
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, var(--bg-card) 100%);
+        }
+
+        [data-theme="dark"] .excuse-display.has-content {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, var(--bg-card) 100%);
+        }
+
+        .excuse-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            max-width: 600px;
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .excuse-placeholder {
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--primary);
+            margin-left: 3px;
+            animation: cursorBlink 1s infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Control Panel */
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .control-btn {
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .control-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .control-btn:hover::before {
+            left: 100%;
+        }
+
+        .control-btn.primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-color: var(--primary);
+            color: var(--text-white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .control-btn.primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .control-btn.secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            border-color: var(--secondary);
+            color: var(--text-white);
+        }
+
+        .control-btn.success {
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            border-color: var(--success);
+            color: var(--text-white);
+        }
+
+        .control-btn.warning {
+            background: linear-gradient(135deg, var(--warning), #f97316);
+            border-color: var(--warning);
+            color: var(--text-white);
+        }
+
+        .control-btn i {
+            transition: var(--transition);
+        }
+
+        .control-btn:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .panel-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: var(--transition-slow);
+            border: 1px solid var(--border-color);
+        }
+
+        .panel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .panel-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            transition: var(--transition-slow);
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .panel-content {
+            padding: 1.5rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quick-action {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-action::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .quick-action:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--bg-secondary);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quick-action:hover::before {
+            left: 100%;
+        }
+
+        .quick-action-icon {
+            width: 16px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .quick-action:hover .quick-action-icon {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        /* History */
+        .history-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .history-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .history-container::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 3px;
+        }
+
+        .history-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .history-item {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            transition: var(--transition-bounce);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .history-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .history-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .history-item:hover::before {
+            left: 100%;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .history-time {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-family: 'JetBrains Mono', monospace;
+            transition: var(--transition);
+        }
+
+        .history-category {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-white);
+            font-size: 0.625rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .history-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow-xl);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1002;
+            max-width: 350px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), var(--bg-card));
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--error);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), var(--bg-card));
+        }
+
+        .notification.warning {
+            border-left: 4px solid var(--warning);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), var(--bg-card));
+        }
+
+        .notification-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .notification-text {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-overlay);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-slow);
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            background: var(--bg-card);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-2xl);
+            transition: var(--transition-bounce);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            transition: var(--transition-slow);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .close-modal {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: var(--error);
+            color: var(--text-white);
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        /* New Features Styles */
+        .excuse-length-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .length-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .length-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .length-btn:hover::before {
+            left: 100%;
+        }
+
+        .length-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--text-white);
+        }
+
+        .excuse-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .star {
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            font-size: 1.1rem;
+        }
+
+        .star.active,
+        .star:hover {
+            color: var(--warning);
+            transform: scale(1.2);
+        }
+
+        .excuse-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--text-white);
+            transform: scale(1.05);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .excuse-counter {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition-slow);
+        }
+
+        .counter-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            transition: var(--transition);
+        }
+
+        .counter-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .mood-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .mood-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mood-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .mood-btn:hover::before {
+            left: 100%;
+        }
+
+        .mood-btn.active {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--text-white);
+        }
+
+        .excuse-complexity {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .complexity-slider {
+            flex: 1;
+            height: 6px;
+            background: var(--bg-secondary);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .complexity-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .complexity-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--success);
+            color: var(--text-white);
+            font-size: 0.625rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .excuse-analytics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .analytics-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-bounce);
+            cursor: pointer;
+        }
+
+        .analytics-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .analytics-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            transition: var(--transition);
+        }
+
+        .analytics-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 280px 1fr 300px;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .sidebar,
+            .right-panel {
+                order: 2;
+            }
+            
+            .main-content {
+                order: 1;
+            }
+            
+            .control-panel {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+            }
+            
+            .logo-title {
+                font-size: 1.25rem;
+            }
+            
+            .header-actions {
+                gap: 0.5rem;
+            }
+            
+            .control-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mood-selector {
+                flex-direction: column;
+            }
+
+            .excuse-length-selector {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+            }
+            
+            .excuse-display {
+                padding: 2rem 1rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Success Animation */
+        .success-animation {
+            animation: successPulse 0.6s ease-out;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Shake Animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.2); }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">EF</div>
+        <div class="loading-title">ExcuseForge</div>
+        <div class="loading-subtitle">Ultimate Professional Excuse Generator</div>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text">Initializing advanced excuse algorithms...</div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="notification-icon"></i>
+        <span class="notification-text"></span>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Modal Title</h2>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">
+                    <div class="logo-title">ExcuseForge</div>
+                    <div class="logo-subtitle">Ultimate Professional Excuse Generator</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="header-btn" id="helpBtn">
+                    <i class="fas fa-question-circle"></i>
+                    Help
+                </button>
+                <button class="header-btn" id="shareAppBtn">
+                    <i class="fas fa-share-alt"></i>
+                    Share App
+                </button>
+                <a href="#" class="header-btn primary" id="githubBtn">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-search"></i>
+                    Search Excuses
+                </h3>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search excuses...">
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-list"></i>
+                    Categories
+                </h3>
+                <div class="category-list">
+                    <div class="category-item active" data-category="work">
+                        <i class="fas fa-briefcase category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Professional</div>
+                            <div class="category-count">20 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="academic">
+                        <i class="fas fa-graduation-cap category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Academic</div>
+                            <div class="category-count">18 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="social">
+                        <i class="fas fa-users category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Social</div>
+                            <div class="category-count">22 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="health">
+                        <i class="fas fa-heartbeat category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Health</div>
+                            <div class="category-count">16 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="tech">
+                        <i class="fas fa-laptop-code category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Technical</div>
+                            <div class="category-count">19 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="creative">
+                        <i class="fas fa-palette category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Creative</div>
+                            <div class="category-count">15 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="family">
+                        <i class="fas fa-home category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Family</div>
+                            <div class="category-count">17 excuses</div>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="travel">
+                        <i class="fas fa-plane category-icon"></i>
+                        <div class="category-info">
+                            <div class="category-name">Travel</div>
+                            <div class="category-count">14 excuses</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-chart-bar"></i>
+                    Statistics
+                </h3>
+                <div class="stats-grid">
+                    <div class="stat-card" title="Total excuses generated">
+                        <div class="stat-value" id="totalGenerated">0</div>
+                        <div class="stat-label">Generated</div>
+                    </div>
+                    <div class="stat-card" title="Total excuses copied">
+                        <div class="stat-value" id="totalCopied">0</div>
+                        <div class="stat-label">Copied</div>
+                    </div>
+                    <div class="stat-card" title="Favorite excuses saved">
+                        <div class="stat-value" id="totalFavorites">0</div>
+                        <div class="stat-label">Favorites</div>
+                    </div>
+                    <div class="stat-card" title="Daily usage streak">
+                        <div class="stat-value" id="currentStreak">1</div>
+                        <div class="stat-label">Streak</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Excuse Generator -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        Professional Excuse Generator 
+                        <span class="feature-badge">
+                            <i class="fas fa-star"></i>
+                            Premium Quality
+                        </span>
+                    </h2>
+                    <p class="card-subtitle">Generate unlimited professional excuses with advanced AI-powered customization</p>
+                </div>
+                <div class="card-content">
+                    <!-- Excuse Length Selector -->
+                    <div class="excuse-length-selector">
+                        <button class="length-btn active" data-length="short">Short</button>
+                        <button class="length-btn" data-length="medium">Medium</button>
+                        <button class="length-btn" data-length="long">Long</button>
+                        <button class="length-btn" data-length="detailed">Detailed</button>
+                    </div>
+
+                    <!-- Mood Selector -->
+                    <div class="mood-selector">
+                        <button class="mood-btn active" data-mood="professional">
+                            <i class="fas fa-tie"></i>
+                            Professional
+                        </button>
+                        <button class="mood-btn" data-mood="casual">
+                            <i class="fas fa-smile"></i>
+                            Casual
+                        </button>
+                        <button class="mood-btn" data-mood="urgent">
+                            <i class="fas fa-exclamation"></i>
+                            Urgent
+                        </button>
+                        <button class="mood-btn" data-mood="apologetic">
+                            <i class="fas fa-heart"></i>
+                            Apologetic
+                        </button>
+                    </div>
+
+                    <!-- Complexity Slider -->
+                    <div class="excuse-complexity">
+                        <span style="font-size: 0.875rem; color: var(--text-secondary);">Simple</span>
+                        <input type="range" class="complexity-slider" id="complexitySlider" min="1" max="5" value="3">
+                        <span style="font-size: 0.875rem; color: var(--text-secondary);">Complex</span>
+                    </div>
+
+                    <div class="excuse-display" id="excuseDisplay">
+                        <div class="excuse-text excuse-placeholder" id="excuseText">
+                            Select your preferences and click "Generate Excuse" to create your perfect excuse
+                        </div>
+                    </div>
+
+                    <!-- Excuse Rating -->
+                    <div class="excuse-rating" id="excuseRating" style="display: none;">
+                        <span style="font-size: 0.875rem; color: var(--text-secondary);">Rate this excuse:</span>
+                        <div class="rating-stars">
+                            <i class="fas fa-star star" data-rating="1"></i>
+                            <i class="fas fa-star star" data-rating="2"></i>
+                            <i class="fas fa-star star" data-rating="3"></i>
+                            <i class="fas fa-star star" data-rating="4"></i>
+                            <i class="fas fa-star star" data-rating="5"></i>
+                        </div>
+                        <span id="ratingText" style="font-size: 0.875rem; color: var(--text-secondary);"></span>
+                    </div>
+
+                    <!-- Excuse Tags -->
+                    <div class="excuse-tags" id="excuseTags" style="display: none;">
+                        <!-- Tags will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">Action Center</h2>
+                    <p class="card-subtitle">Generate, customize, and manage your excuses</p>
+                </div>
+                <div class="card-content">
+                    <div class="control-panel">
+                        <button class="control-btn primary" id="generateBtn" title="Generate a new excuse (Spacebar)">
+                            <i class="fas fa-magic"></i>
+                            Generate Excuse
+                        </button>
+                        <button class="control-btn secondary" id="copyBtn" title="Copy to clipboard (Ctrl+C)">
+                            <i class="fas fa-copy"></i>
+                            Copy to Clipboard
+                        </button>
+                        <button class="control-btn" id="shareBtn" title="Share excuse">
+                            <i class="fas fa-share-alt"></i>
+                            Share Excuse
+                        </button>
+                        <button class="control-btn success" id="favoriteBtn" title="Add to favorites">
+                            <i class="fas fa-heart"></i>
+                            Add to Favorites
+                        </button>
+                        <button class="control-btn warning" id="customizeBtn" title="Customize excuse">
+                            <i class="fas fa-edit"></i>
+                            Customize
+                        </button>
+                        <button class="control-btn" id="translateBtn" title="Translate excuse">
+                            <i class="fas fa-language"></i>
+                            Translate
+                        </button>
+                        <button class="control-btn" id="regenerateBtn" title="Generate another excuse">
+                            <i class="fas fa-redo"></i>
+                            Regenerate
+                        </button>
+                        <button class="control-btn" id="templateBtn" title="Use predefined template">
+                            <i class="fas fa-file-alt"></i>
+                            Use Template
+                        </button>
+                        <button class="control-btn" id="aiEnhanceBtn" title="AI enhance excuse">
+                            <i class="fas fa-robot"></i>
+                            AI Enhance
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Excuse Analytics -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">Excuse Analytics</h2>
+                    <p class="card-subtitle">Track your excuse generation patterns</p>
+                </div>
+                <div class="card-content">
+                    <div class="excuse-analytics">
+                        <div class="analytics-item">
+                            <span class="analytics-value" id="todayCount">0</span>
+                            <span class="analytics-label">Today</span>
+                        </div>
+                        <div class="analytics-item">
+                            <span class="analytics-value" id="weekCount">0</span>
+                            <span class="analytics-label">This Week</span>
+                        </div>
+                        <div class="analytics-item">
+                            <span class="analytics-value" id="avgRating">0.0</span>
+                            <span class="analytics-label">Avg Rating</span>
+                        </div>
+                        <div class="analytics-item">
+                            <span class="analytics-value" id="topCategory">Work</span>
+                            <span class="analytics-label">Top Category</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            <!-- Excuse Counter -->
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h3 class="panel-title">
+                        <i class="fas fa-counter"></i>
+                        Daily Counter
+                    </h3>
+                </div>
+                <div class="panel-content">
+                    <div class="excuse-counter">
+                        <span class="counter-number" id="dailyCounter">0</span>
+                        <span class="counter-label">Excuses Generated Today</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h3 class="panel-title">
+                        <i class="fas fa-bolt"></i>
+                        Quick Actions
+                    </h3>
+                </div>
+                <div class="panel-content">
+                    <div class="quick-actions">
+                        <button class="quick-action" id="randomCategoryBtn" title="Switch to random category">
+                            <i class="fas fa-random quick-action-icon"></i>
+                            Random Category
+                        </button>
+                        <button class="quick-action" id="viewFavoritesBtn" title="View saved favorites">
+                            <i class="fas fa-star quick-action-icon"></i>
+                            View Favorites
+                        </button>
+                        <button class="quick-action" id="exportHistoryBtn" title="Export usage history">
+                            <i class="fas fa-download quick-action-icon"></i>
+                            Export History
+                        </button>
+                        <button class="quick-action" id="clearHistoryBtn" title="Clear all history">
+                            <i class="fas fa-trash quick-action-icon"></i>
+                            Clear History
+                        </button>
+                        <button class="quick-action" id="bulkGenerateBtn" title="Generate multiple excuses">
+                            <i class="fas fa-layer-group quick-action-icon"></i>
+                            Bulk Generate
+                        </button>
+                        <button class="quick-action" id="excuseLibraryBtn" title="Browse excuse library">
+                            <i class="fas fa-book quick-action-icon"></i>
+                            Excuse Library
+                        </button>
+                        <button class="quick-action" id="trendingBtn" title="View trending excuses">
+                            <i class="fas fa-fire quick-action-icon"></i>
+                            Trending Excuses
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h3 class="panel-title">
+                        <i class="fas fa-history"></i>
+                        Recent History
+                    </h3>
+                </div>
+                <div class="panel-content">
+                    <div class="history-container" id="historyContainer">
+                        <div class="history-item">
+                            <div class="history-header">
+                                <div class="history-time">Welcome</div>
+                                <div class="history-category">System</div>
+                            </div>
+                            <div class="history-text">
+                                Welcome to ExcuseForge! Generate unlimited professional excuses with our advanced features and beautiful dark mode support.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Enhanced Excuse Database with More Categories
+        const excuseDatabase = {
+            work: [
+                "I'm experiencing unexpected technical difficulties with my primary workstation that require immediate IT intervention.",
+                "My internet service provider is conducting emergency infrastructure maintenance in my area.",
+                "I have a family emergency that requires my immediate attention and presence.",
+                "I'm dealing with a medical appointment that was rescheduled due to the doctor's emergency.",
+                "My vehicle broke down unexpectedly and I'm waiting for roadside assistance.",
+                "There's a water main break in my neighborhood causing significant disruption.",
+                "I'm experiencing severe weather conditions that make travel unsafe.",
+                "My childcare provider had a last-minute cancellation due to illness.",
+                "I have a critical home maintenance issue that requires immediate attention.",
+                "I'm dealing with an unexpected legal matter that requires urgent consultation.",
+                "My flight has been delayed indefinitely due to air traffic control issues.",
+                "I'm experiencing a power outage that's affecting my ability to work remotely.",
+                "I have a dental emergency involving severe pain that requires immediate treatment.",
+                "My elderly parent needs assistance with an urgent medical situation.",
+                "I'm dealing with a home security issue that requires immediate attention.",
+                "My computer's hard drive failed and I'm waiting for data recovery services.",
+                "I have a court appearance that was unexpectedly rescheduled to today.",
+                "My apartment building is being evacuated due to a gas leak.",
+                "I'm experiencing food poisoning symptoms and cannot safely travel.",
+                "My car was involved in a minor accident and I need to handle insurance matters."
+            ],
+            academic: [
+                "I submitted my assignment to the wrong portal and didn't realize until after the deadline.",
+                "My laptop crashed and corrupted the file, despite having multiple backups.",
+                "I've been dealing with a family crisis that has significantly impacted my studies.",
+                "The library's database was down during my critical research period.",
+                "I misunderstood the assignment requirements despite reviewing them multiple times.",
+                "My printer malfunctioned while printing my final draft.",
+                "I've been experiencing severe migraines that make it difficult to concentrate.",
+                "The campus network was experiencing widespread outages during my submission window.",
+                "I had conflicting information about the assignment deadline from different sources.",
+                "My research supervisor was unavailable for consultation during the final week.",
+                "I experienced a personal emergency requiring immediate travel out of state.",
+                "The required textbook was unavailable at both the library and bookstore.",
+                "I've been dealing with a housing situation that disrupted my study environment.",
+                "My computer's hard drive failed and data recovery couldn't retrieve my work.",
+                "I was hospitalized unexpectedly for several days due to a medical condition.",
+                "The online learning platform crashed during my exam submission.",
+                "I had a death in the family that required me to travel for funeral arrangements.",
+                "My study group disbanded unexpectedly, leaving me without collaborative support."
+            ],
+            social: [
+                "I have a prior commitment that I completely forgot about when I accepted this invitation.",
+                "I'm not feeling well and don't want to risk getting others sick.",
+                "My transportation arrangements fell through at the last minute.",
+                "I have a work emergency that requires my immediate attention this evening.",
+                "I'm dealing with a personal matter that needs my full focus right now.",
+                "My babysitter cancelled unexpectedly and I can't find alternative childcare.",
+                "I have a family obligation that I can't postpone or reschedule.",
+                "I'm experiencing car trouble and don't have reliable transportation tonight.",
+                "I have an early morning commitment that requires adequate rest.",
+                "I'm feeling overwhelmed and need some personal time to recharge.",
+                "I have a medical appointment that was rescheduled to this time.",
+                "I'm dealing with a home emergency that requires my immediate presence.",
+                "My pet is seriously ill and needs constant monitoring.",
+                "I have unexpected guests from out of town who arrived earlier than planned.",
+                "I'm experiencing a financial situation that makes it difficult to participate.",
+                "My phone died and I just saw your message now.",
+                "I have a migraine that makes it impossible to be around noise and lights.",
+                "I'm waiting for an important call that I cannot miss.",
+                "My car is in the shop and I don't have alternative transportation.",
+                "I have a family member visiting who needs my attention.",
+                "I'm dealing with a landlord issue that requires immediate resolution.",
+                "I have a work deadline that I need to meet tonight."
+            ],
+            health: [
+                "I'm experiencing symptoms that could be contagious and want to avoid spreading illness.",
+                "I have a medical appointment that couldn't be scheduled outside of work hours.",
+                "I'm dealing with a chronic condition that's flaring up today.",
+                "I need to accompany a family member to an important medical procedure.",
+                "I'm experiencing severe allergic reactions that require immediate attention.",
+                "I have a dental emergency involving severe pain that needs treatment.",
+                "I'm dealing with medication side effects that impair my ability to function.",
+                "I need to undergo medical testing that requires specific preparation.",
+                "I'm experiencing mental health challenges that require professional support.",
+                "I have a specialist appointment with a very long waiting list.",
+                "I'm dealing with a sports injury that limits my mobility.",
+                "I need to care for a sick family member who requires supervision.",
+                "I'm experiencing vision problems that make it unsafe to drive.",
+                "I have a medical procedure scheduled that requires recovery time.",
+                "I'm dealing with severe insomnia that's affecting my cognitive function.",
+                "I'm having an adverse reaction to a new medication.",
+                "I need to attend a therapy session that couldn't be rescheduled."
+            ],
+            tech: [
+                "My primary device experienced a critical system failure requiring professional recovery.",
+                "The software I need is experiencing widespread server outages globally.",
+                "I'm dealing with a cybersecurity incident that requires immediate system isolation.",
+                "My internet service provider is experiencing regional outages.",
+                "The cloud service where my work is stored is undergoing emergency maintenance.",
+                "I'm experiencing compatibility issues between essential software applications.",
+                "My backup systems failed simultaneously due to a power surge.",
+                "The platform required for this task is undergoing unexpected security updates.",
+                "I'm dealing with a hardware malfunction affecting multiple devices.",
+                "The network infrastructure in my building is experiencing difficulties.",
+                "I'm experiencing software licensing issues preventing access to applications.",
+                "My development environment crashed and requires complete reconfiguration.",
+                "I'm dealing with database corruption that affects all stored work.",
+                "My computer's motherboard failed due to an electrical surge.",
+                "I'm experiencing persistent malware issues despite professional cleaning.",
+                "The API I depend on is experiencing unexpected downtime.",
+                "My VPN connection is unstable, preventing secure access to work systems.",
+                "I'm dealing with a DNS resolution issue affecting all internet connectivity.",
+                "My solid-state drive failed without warning, causing data loss."
+            ],
+            creative: [
+                "I'm experiencing a creative block that's preventing quality work production.",
+                "My artistic inspiration requires a specific environment that's currently unavailable.",
+                "I need additional time to research and develop the creative concept properly.",
+                "The materials I need for this project are temporarily unavailable.",
+                "I'm collaborating with other professionals whose schedules don't align.",
+                "My creative process requires a longer incubation period for optimal results.",
+                "I'm dealing with perfectionist tendencies that are preventing completion.",
+                "The creative brief has evolved significantly requiring substantial adjustments.",
+                "I need to consult with subject matter experts for accuracy.",
+                "My creative workspace is temporarily unavailable due to renovations.",
+                "I'm experiencing technical difficulties with specialized creative software.",
+                "The project scope has expanded beyond original parameters.",
+                "I'm waiting for client feedback that will impact the creative direction.",
+                "My creative team member is dealing with issues affecting collaboration.",
+                "I need to attend a workshop that will directly benefit this project.",
+                "The lighting conditions in my studio are not suitable for this work.",
+                "I'm waiting for a model or subject who cancelled last minute."
+            ],
+            family: [
+                "My child is sick and needs to stay home from school today.",
+                "I have a parent-teacher conference that couldn't be rescheduled.",
+                "My elderly parent has a medical appointment and needs transportation.",
+                "There's a family emergency involving a relative in another city.",
+                "My spouse is traveling and I need to handle all childcare responsibilities.",
+                "I have a custody arrangement that requires me to be available today.",
+                "My child's school called and they need to be picked up immediately.",
+                "I'm dealing with a family legal matter that requires my presence.",
+                "My babysitter is unavailable and I can't find alternative childcare.",
+                "I have a family celebration that was planned months in advance.",
+                "My teenager is having a crisis and needs my immediate support.",
+                "I need to help my elderly neighbor with an emergency situation.",
+                "My child has a school performance that I cannot miss.",
+                "I'm dealing with a divorce proceeding that requires court attendance.",
+                "My family member is being discharged from the hospital today.",
+                "I have a family reunion that requires travel arrangements.",
+                "My child's daycare is closed due to a staff shortage."
+            ],
+            travel: [
+                "My flight has been cancelled due to severe weather conditions.",
+                "I'm experiencing significant delays at the airport due to air traffic control.",
+                "My connecting flight was missed due to the previous flight's delay.",
+                "The airline overbooked my flight and I'm waiting for the next available seat.",
+                "I'm dealing with lost luggage that contains essential items for my trip.",
+                "My passport has an issue that's preventing international travel.",
+                "The hotel where I was supposed to stay has cancelled my reservation.",
+                "I'm experiencing car trouble during a road trip and waiting for repairs.",
+                "The train service has been suspended due to track maintenance.",
+                "I'm dealing with a travel visa issue that's delaying my departure.",
+                "My travel companion has fallen ill and we need to postpone the trip.",
+                "The rental car company doesn't have the vehicle I reserved available.",
+                "I'm experiencing motion sickness that makes travel extremely difficult.",
+                "The border crossing is experiencing unusual delays due to security measures.",
+                "My travel insurance claim is being processed for a previous cancellation."
+            ]
+        };
+
+        // Application State
+        let currentCategory = 'work';
+        let currentExcuse = '';
+        let currentLength = 'medium';
+        let currentMood = 'professional';
+        let currentComplexity = 3;
+        let isTyping = false;
+        let currentTheme = 'light';
+        let stats = {
+            totalGenerated: 0,
+            totalCopied: 0,
+            totalFavorites: 0,
+            currentStreak: 1,
+            todayCount: 0,
+            weekCount: 0,
+            avgRating: 0,
+            topCategory: 'work'
+        };
+        let history = [];
+        let favorites = [];
+        let ratings = [];
+
+        // Audio Context for Sound Effects
+        let audioContext;
+
+        // ExcuseForge Application
+        class ExcuseForge {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.showLoadingScreen();
+                this.setupEventListeners();
+                this.loadTheme();
+                this.loadStats();
+                this.loadFavorites();
+                this.updateStatsDisplay();
+                this.initAudio();
+                this.updateDailyCounter();
+                
+                // Hide loading screen after initialization
+                setTimeout(() => {
+                    this.hideLoadingScreen();
+                }, 3500);
+            }
+
+            showLoadingScreen() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.classList.remove('hidden');
+                
+                // Update loading text dynamically
+                const loadingTexts = [
+                    'Initializing advanced excuse algorithms...',
+                    'Loading professional templates...',
+                    'Calibrating creativity engines...',
+                    'Preparing dark mode magic...',
+                    'Almost ready to generate excuses!'
+                ];
+                
+                let textIndex = 0;
+                const loadingTextElement = document.querySelector('.loading-text');
+                
+                const textInterval = setInterval(() => {
+                    if (textIndex < loadingTexts.length - 1) {
+                        textIndex++;
+                        loadingTextElement.textContent = loadingTexts[textIndex];
+                    } else {
+                        clearInterval(textInterval);
+                    }
+                }, 700);
+            }
+
+            hideLoadingScreen() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.classList.add('hidden');
+                
+                // Add fade-in animation to main content
+                document.body.classList.add('fade-in');
+                
+                // Show welcome notification
+                setTimeout(() => {
+                    this.showNotification('Welcome to ExcuseForge! Ready to generate professional excuses.', 'success');
+                }, 500);
+            }
+
+            setupEventListeners() {
+                // Theme toggle
+                document.getElementById('themeToggle').addEventListener('click', () => {
+                    this.toggleTheme();
+                });
+
+                // Category selection
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        this.selectCategory(item.dataset.category);
+                    });
+                });
+
+                // Length selection
+                document.querySelectorAll('.length-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.selectLength(btn.dataset.length);
+                    });
+                });
+
+                // Mood selection
+                document.querySelectorAll('.mood-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.selectMood(btn.dataset.mood);
+                    });
+                });
+
+                // Complexity slider
+                document.getElementById('complexitySlider').addEventListener('input', (e) => {
+                    currentComplexity = parseInt(e.target.value);
+                });
+
+                // Control buttons
+                document.getElementById('generateBtn').addEventListener('click', () => {
+                    this.generateExcuse();
+                });
+
+                document.getElementById('copyBtn').addEventListener('click', () => {
+                    this.copyExcuse();
+                });
+
+                document.getElementById('shareBtn').addEventListener('click', () => {
+                    this.shareExcuse();
+                });
+
+                document.getElementById('favoriteBtn').addEventListener('click', () => {
+                    this.addToFavorites();
+                });
+
+                document.getElementById('customizeBtn').addEventListener('click', () => {
+                    this.customizeExcuse();
+                });
+
+                document.getElementById('translateBtn').addEventListener('click', () => {
+                    this.translateExcuse();
+                });
+
+                document.getElementById('regenerateBtn').addEventListener('click', () => {
+                    this.regenerateExcuse();
+                });
+
+                document.getElementById('templateBtn').addEventListener('click', () => {
+                    this.useTemplate();
+                });
+
+                document.getElementById('aiEnhanceBtn').addEventListener('click', () => {
+                    this.aiEnhanceExcuse();
+                });
+
+                // Header actions
+                document.getElementById('helpBtn').addEventListener('click', () => {
+                    this.showHelp();
+                });
+
+                document.getElementById('shareAppBtn').addEventListener('click', () => {
+                    this.shareApp();
+                });
+
+                document.getElementById('githubBtn').addEventListener('click', () => {
+                    window.open('https://github.com/PrithvijitBose/Excuse-Generator', '_blank');
+                });
+
+                // Quick actions
+                document.getElementById('randomCategoryBtn').addEventListener('click', () => {
+                    this.randomCategory();
+                });
+
+                document.getElementById('viewFavoritesBtn').addEventListener('click', () => {
+                    this.viewFavorites();
+                });
+
+                document.getElementById('exportHistoryBtn').addEventListener('click', () => {
+                    this.exportHistory();
+                });
+
+                document.getElementById('clearHistoryBtn').addEventListener('click', () => {
+                    this.clearHistory();
+                });
+
+                document.getElementById('bulkGenerateBtn').addEventListener('click', () => {
+                    this.bulkGenerate();
+                });
+
+                document.getElementById('excuseLibraryBtn').addEventListener('click', () => {
+                    this.showExcuseLibrary();
+                });
+
+                document.getElementById('trendingBtn').addEventListener('click', () => {
+                    this.showTrendingExcuses();
+                });
+
+                // Search functionality
+                document.getElementById('searchBox').addEventListener('input', (e) => {
+                    this.searchExcuses(e.target.value);
+                });
+
+                // Rating system
+                document.querySelectorAll('.star').forEach(star => {
+                    star.addEventListener('click', () => {
+                        this.rateExcuse(parseInt(star.dataset.rating));
+                    });
+                });
+
+                // Modal controls
+                document.getElementById('closeModal').addEventListener('click', () => {
+                    this.closeModal();
+                });
+
+                document.getElementById('modalOverlay').addEventListener('click', (e) => {
+                    if (e.target === e.currentTarget) {
+                        this.closeModal();
+                    }
+                });
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space' && !this.isTyping && !e.target.matches('input, textarea, select')) {
+                        e.preventDefault();
+                        this.generateExcuse();
+                    } else if (e.ctrlKey && e.code === 'KeyC' && !e.target.matches('input, textarea')) {
+                        e.preventDefault();
+                        this.copyExcuse();
+                    } else if (e.code === 'Escape') {
+                        this.closeModal();
+                    } else if (e.ctrlKey && e.code === 'KeyR' && !e.target.matches('input, textarea')) {
+                        e.preventDefault();
+                        this.regenerateExcuse();
+                    } else if (e.ctrlKey && e.code === 'KeyD' && !e.target.matches('input, textarea')) {
+                        e.preventDefault();
+                        this.toggleTheme();
+                    }
+                });
+            }
+
+            toggleTheme() {
+                const body = document.body;
+                const themeToggle = document.getElementById('themeToggle');
+                const icon = themeToggle.querySelector('i');
+                
+                if (currentTheme === 'light') {
+                    currentTheme = 'dark';
+                    body.setAttribute('data-theme', 'dark');
+                    icon.className = 'fas fa-sun';
+                    this.showNotification('Dark mode activated! 🌙', 'success');
+                } else {
+                    currentTheme = 'light';
+                    body.setAttribute('data-theme', 'light');
+                    icon.className = 'fas fa-moon';
+                    this.showNotification('Light mode activated! ☀️', 'success');
+                }
+                
+                this.saveTheme();
+                this.playClickSound();
+                
+                // Add glow effect to theme toggle
+                themeToggle.classList.add('glow');
+                setTimeout(() => {
+                    themeToggle.classList.remove('glow');
+                }, 1000);
+            }
+
+            saveTheme() {
+                localStorage.setItem('excuseforge_theme', currentTheme);
+            }
+
+            loadTheme() {
+                const savedTheme = localStorage.getItem('excuseforge_theme');
+                if (savedTheme) {
+                    currentTheme = savedTheme;
+                    document.body.setAttribute('data-theme', currentTheme);
+                    
+                    const icon = document.getElementById('themeToggle').querySelector('i');
+                    icon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            initAudio() {
+                try {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    console.log('Audio not supported');
+                }
+
+                document.addEventListener('click', () => {
+                    if (audioContext && audioContext.state === 'suspended') {
+                        audioContext.resume();
+                    }
+                }, { once: true });
+            }
+
+            playSound(frequency, duration, type = 'sine', volume = 0.03) {
+                if (!audioContext) return;
+
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                oscillator.type = type;
+                
+                gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration / 1000);
+            }
+
+            playSuccessSound() {
+                const frequencies = [523, 659, 784, 1047];
+                frequencies.forEach((freq, index) => {
+                    setTimeout(() => {
+                        this.playSound(freq, 100, 'sine', 0.02);
+                    }, index * 60);
+                });
+            }
+
+            playClickSound() {
+                this.playSound(800, 60, 'sine', 0.02);
+            }
+
+            selectCategory(category) {
+                currentCategory = category;
+                this.playClickSound();
+                
+                // Update UI
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                const selectedItem = document.querySelector(`[data-category="${category}"]`);
+                selectedItem.classList.add('active');
+                
+                // Reset excuse display
+                const excuseText = document.getElementById('excuseText');
+                excuseText.textContent = `Ready to generate a ${category} excuse. Click "Generate Excuse" to begin.`;
+                excuseText.className = 'excuse-text excuse-placeholder';
+                
+                const excuseDisplay = document.getElementById('excuseDisplay');
+                excuseDisplay.classList.remove('has-content');
+                
+                this.showNotification(`Switched to ${category} category`, 'success');
+            }
+
+            selectLength(length) {
+                currentLength = length;
+                this.playClickSound();
+                
+                document.querySelectorAll('.length-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.querySelector(`[data-length="${length}"]`).classList.add('active');
+                this.showNotification(`Length set to ${length}`, 'success');
+            }
+
+            selectMood(mood) {
+                currentMood = mood;
+                this.playClickSound();
+                
+                document.querySelectorAll('.mood-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.querySelector(`[data-mood="${mood}"]`).classList.add('active');
+                this.showNotification(`Mood set to ${mood}`, 'success');
+            }
+
+            generateExcuse() {
+                if (isTyping) return;
+
+                const excuses = excuseDatabase[currentCategory];
+                let selectedExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+                
+                // Modify excuse based on length
+                selectedExcuse = this.adjustExcuseLength(selectedExcuse);
+                
+                // Modify excuse based on mood
+                selectedExcuse = this.adjustExcuseMood(selectedExcuse);
+                
+                // Modify excuse based on complexity
+                selectedExcuse = this.adjustExcuseComplexity(selectedExcuse);
+                
+                currentExcuse = selectedExcuse;
+                
+                this.playClickSound();
+                this.addLoadingState();
+                
+                setTimeout(() => {
+                    this.typeExcuse(selectedExcuse);
+                }, 500);
+                
+                // Update stats
+                stats.totalGenerated++;
+                stats.todayCount++;
+                stats.weekCount++;
+                this.updateStatsDisplay();
+                this.updateDailyCounter();
+                this.saveStats();
+                
+                // Add to history
+                this.addToHistory(selectedExcuse);
+                
+                // Show rating and tags
+                this.showExcuseRating();
+                this.showExcuseTags();
+            }
+
+            adjustExcuseLength(excuse) {
+                switch (currentLength) {
+                    case 'short':
+                        return excuse.split('.')[0] + '.';
+                    case 'medium':
+                        return excuse;
+                    case 'long':
+                        return excuse + ' This situation requires careful handling and coordination with multiple parties to ensure proper resolution.';
+                    case 'detailed':
+                        return excuse + ' This situation requires careful handling and coordination with multiple parties to ensure proper resolution. I will provide regular updates as the situation develops and expect to have this matter resolved within the next 24-48 hours.';
+                    default:
+                        return excuse;
+                }
+            }
+
+            adjustExcuseMood(excuse) {
+                switch (currentMood) {
+                    case 'professional':
+                        return excuse;
+                    case 'casual':
+                        return excuse.replace(/I'm experiencing/g, "I'm having").replace(/requires/g, "needs");
+                    case 'urgent':
+                        return 'URGENT: ' + excuse + ' This needs immediate attention.';
+                    case 'apologetic':
+                        return 'I sincerely apologize, but ' + excuse.toLowerCase() + ' I understand this may cause inconvenience.';
+                    default:
+                        return excuse;
+                }
+            }
+
+            adjustExcuseComplexity(excuse) {
+                if (currentComplexity <= 2) {
+                    // Simplify
+                    return excuse.split(',')[0] + '.';
+                } else if (currentComplexity >= 4) {
+                    // Add complexity
+                    const complexAdditions = [
+                        ' This involves multiple stakeholders and requires careful coordination.',
+                        ' The situation has several interconnected components that must be addressed systematically.',
+                        ' Due to regulatory compliance requirements, this matter demands thorough documentation.',
+                        ' The complexity of this issue necessitates consultation with subject matter experts.'
+                    ];
+                    return excuse + complexAdditions[Math.floor(Math.random() * complexAdditions.length)];
+                }
+                return excuse;
+            }
+
+            addLoadingState() {
+                const generateBtn = document.getElementById('generateBtn');
+                const originalText = generateBtn.innerHTML;
+                
+                generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+                generateBtn.classList.add('loading');
+                
+                setTimeout(() => {
+                    generateBtn.innerHTML = originalText;
+                    generateBtn.classList.remove('loading');
+                }, 500);
+            }
+
+            typeExcuse(text) {
+                isTyping = true;
+                const excuseElement = document.getElementById('excuseText');
+                const excuseDisplay = document.getElementById('excuseDisplay');
+                
+                excuseElement.innerHTML = '';
+                excuseElement.className = 'excuse-text';
+                excuseDisplay.classList.add('has-content');
+                
+                let index = 0;
+                const baseSpeed = 50;
+                
+                const typeChar = () => {
+                    if (index < text.length) {
+                        excuseElement.innerHTML += text[index];
+                        index++;
+                        
+                        const delay = baseSpeed + (Math.random() * 10 - 5);
+                        setTimeout(typeChar, Math.max(5, delay));
+                    } else {
+                        excuseElement.innerHTML += '<span class="typing-cursor"></span>';
+                        isTyping = false;
+                        
+                        this.playSuccessSound();
+                        
+                        setTimeout(() => {
+                            const cursor = excuseElement.querySelector('.typing-cursor');
+                            if (cursor) cursor.remove();
+                        }, 3000);
+                    }
+                };
+                
+                typeChar();
+            }
+
+            copyExcuse() {
+                if (!currentExcuse) {
+                    this.showNotification('No excuse to copy!', 'error');
+                    return;
+                }
+
+                navigator.clipboard.writeText(currentExcuse).then(() => {
+                    const copyBtn = document.getElementById('copyBtn');
+                    const originalText = copyBtn.innerHTML;
+                    
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    copyBtn.classList.add('success-animation');
+                    
+                    this.playSuccessSound();
+                    this.showNotification('Excuse copied to clipboard!', 'success');
+                    
+                    stats.totalCopied++;
+                    this.updateStatsDisplay();
+                    this.saveStats();
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.classList.remove('success-animation');
+                    }, 2000);
+                }).catch(() => {
+                    this.showNotification('Failed to copy excuse', 'error');
+                });
+            }
+
+            shareExcuse() {
+                if (!currentExcuse) {
+                    this.showNotification('No excuse to share!', 'error');
+                    return;
+                }
+
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'ExcuseForge - Professional Excuse',
+                        text: currentExcuse,
+                        url: window.location.href
+                    }).then(() => {
+                        this.showNotification('Excuse shared successfully!', 'success');
+                        this.playSuccessSound();
+                    }).catch(() => {
+                        this.copyExcuse();
+                    });
+                } else {
+                    this.copyExcuse();
+                    this.showNotification('Excuse copied to clipboard for sharing!', 'success');
+                }
+                
+                this.playClickSound();
+            }
+
+            addToFavorites() {
+                if (!currentExcuse) {
+                    this.showNotification('No excuse to favorite!', 'error');
+                    return;
+                }
+
+                if (favorites.some(fav => fav.text === currentExcuse)) {
+                    this.showNotification('Excuse already in favorites!', 'warning');
+                    return;
+                }
+                
+                const favorite = {
+                    text: currentExcuse,
+                    category: currentCategory,
+                    length: currentLength,
+                    mood: currentMood,
+                    complexity: currentComplexity,
+                    timestamp: new Date().toISOString(),
+                    id: Date.now()
+                };
+                
+                favorites.push(favorite);
+                this.saveFavorites();
+                
+                const favoriteBtn = document.getElementById('favoriteBtn');
+                const originalText = favoriteBtn.innerHTML;
+                
+                favoriteBtn.innerHTML = '<i class="fas fa-heart" style="color: #ef4444;"></i> Added!';
+                favoriteBtn.classList.add('success-animation');
+                
+                this.playSuccessSound();
+                this.showNotification('Added to favorites!', 'success');
+                
+                stats.totalFavorites++;
+                this.updateStatsDisplay();
+                this.saveStats();
+                
+                setTimeout(() => {
+                    favoriteBtn.innerHTML = originalText;
+                    favoriteBtn.classList.remove('success-animation');
+                }, 2000);
+            }
+
+            customizeExcuse() {
+                if (!currentExcuse) {
+                    this.showNotification('Generate an excuse first!', 'warning');
+                    return;
+                }
+
+                this.openModal('Customize Excuse', `
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Edit your excuse:</label>
+                        <textarea id="customExcuseText" style="width: 100%; height: 150px; padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); resize: vertical; background: var(--bg-card); color: var(--text-primary);">${currentExcuse}</textarea>
+                    </div>
+                    <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                        <button onclick="app.cancelCustomize()" style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text-secondary); cursor: pointer;">Cancel</button>
+                        <button onclick="app.applyCustomization()" style="padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: var(--radius-md); background: var(--primary); color: white; cursor: pointer;">Apply Changes</button>
+                    </div>
+                `);
+            }
+
+            applyCustomization() {
+                const customText = document.getElementById('customExcuseText').value.trim();
+                if (customText) {
+                    currentExcuse = customText;
+                    document.getElementById('excuseText').textContent = customText;
+                    this.showNotification('Excuse customized successfully!', 'success');
+                    this.closeModal();
+                }
+            }
+
+            cancelCustomize() {
+                this.closeModal();
+            }
+
+            translateExcuse() {
+                if (!currentExcuse) {
+                    this.showNotification('Generate an excuse first!', 'warning');
+                    return;
+                }
+
+                const languages = [
+                    { code: 'es', name: 'Spanish' },
+                    { code: 'fr', name: 'French' },
+                    { code: 'de', name: 'German' },
+                    { code: 'it', name: 'Italian' },
+                    { code: 'pt', name: 'Portuguese' },
+                    { code: 'ru', name: 'Russian' },
+                    { code: 'ja', name: 'Japanese' },
+                    { code: 'ko', name: 'Korean' },
+                    { code: 'zh', name: 'Chinese' }
+                ];
+
+                const languageOptions = languages.map(lang => 
+                    `<option value="${lang.code}">${lang.name}</option>`
+                ).join('');
+
+                this.openModal('Translate Excuse', `
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Select target language:</label>
+                        <select id="targetLanguage" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--bg-card); color: var(--text-primary);">
+                            <option value="">Choose a language...</option>
+                            ${languageOptions}
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Original excuse:</label>
+                        <div style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); font-style: italic; color: var(--text-secondary);">${currentExcuse}</div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary);">Translated excuse:</label>
+                        <div id="translatedText" style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); min-height: 60px; color: var(--text-light);">Select a language to see translation...</div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                        <button onclick="app.closeModal()" style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text-secondary); cursor: pointer;">Close</button>
+                        <button onclick="app.useTranslation()" style="padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: var(--radius-md); background: var(--primary); color: white; cursor: pointer;">Use Translation</button>
+                    </div>
+                `);
+
+                // Add event listener for language selection
+                setTimeout(() => {
+                    document.getElementById('targetLanguage').addEventListener('change', (e) => {
+                        if (e.target.value) {
+                            this.performTranslation(e.target.value);
+                        }
+                    });
+                }, 100);
+            }
+
+            performTranslation(languageCode) {
+                // Simulated translation (in a real app, you'd use Google Translate API or similar)
+                const translations = {
+                    'es': 'Estoy experimentando dificultades técnicas inesperadas que requieren intervención inmediata.',
+                    'fr': 'Je rencontre des difficultés techniques inattendues qui nécessitent une intervention immédiate.',
+                    'de': 'Ich erlebe unerwartete technische Schwierigkeiten, die sofortige Intervention erfordern.',
+                    'it': 'Sto sperimentando difficoltà tecniche inaspettate che richiedono un intervento immediato.',
+                    'pt': 'Estou enfrentando dificultades técnicas inesperadas que requieren intervención inmediata.',
+                    'ru': 'У меня возникли неожиданные технические трудности, требующие немедленного вмешательства.',
+                    'ja': '即座の介入が必要な予期しない技術的困難を経験しています。',
+                    'ko': '즉각적인 개입이 필요한 예상치 못한 기술적 어려움을 겪고 있습니다.',
+                    'zh': '我遇到了需要立即干预的意外技术困难。'
+                };
+
+                const translatedText = translations[languageCode] || 'Translation not available for this language.';
+                document.getElementById('translatedText').textContent = translatedText;
+                document.getElementById('translatedText').style.color = 'var(--text-primary)';
+            }
+
+            useTranslation() {
+                const translatedText = document.getElementById('translatedText').textContent;
+                if (translatedText && translatedText !== 'Select a language to see translation...' && translatedText !== 'Translation not available for this language.') {
+                    currentExcuse = translatedText;
+                    document.getElementById('excuseText').textContent = translatedText;
+                    this.showNotification('Translation applied successfully!', 'success');
+                    this.closeModal();
+                } else {
+                    this.showNotification('Please select a language first!', 'warning');
+                }
+            }
+
+            regenerateExcuse() {
+                if (isTyping) return;
+                
+                this.playClickSound();
+                
+                const generateBtn = document.getElementById('generateBtn');
+                generateBtn.style.animation = 'shake 0.5s ease-in-out';
+                
+                setTimeout(() => {
+                    generateBtn.style.animation = '';
+                    this.generateExcuse();
+                }, 300);
+            }
+
+            useTemplate() {
+                this.playClickSound();
+                
+                const templates = {
+                    work: [
+                        "I'm experiencing technical difficulties that require immediate attention.",
+                        "I have an urgent family matter that needs my immediate presence.",
+                        "I'm dealing with a medical situation that cannot be postponed.",
+                        "I'm facing transportation issues beyond my control.",
+                        "I have a scheduling conflict that I cannot resolve."
+                    ],
+                    academic: [
+                        "I'm having technical issues with my computer that are preventing submission.",
+                        "I have a family emergency that requires my immediate attention.",
+                        "I'm experiencing health issues that are affecting my ability to complete work.",
+                        "I'm dealing with internet connectivity problems in my area.",
+                        "I have conflicting deadlines that need to be prioritized."
+                    ],
+                    social: [
+                        "I have a prior commitment that I cannot reschedule.",
+                        "I'm not feeling well and don't want to spread illness.",
+                        "I have transportation issues that prevent me from attending.",
+                        "I have a family obligation that requires my presence.",
+                        "I'm dealing with a personal matter that needs immediate attention."
+                    ]
+                };
+                
+                const categoryTemplates = templates[currentCategory] || templates.work;
+                const randomTemplate = categoryTemplates[Math.floor(Math.random() * categoryTemplates.length)];
+                
+                currentExcuse = randomTemplate;
+                
+                const excuseElement = document.getElementById('excuseText');
+                const excuseDisplay = document.getElementById('excuseDisplay');
+                
+                excuseElement.textContent = randomTemplate;
+                excuseElement.className = 'excuse-text';
+                excuseDisplay.classList.add('has-content');
+                
+                this.showNotification('Template applied successfully!', 'success');
+                this.addToHistory(randomTemplate);
+                
+                stats.totalGenerated++;
+                this.updateStatsDisplay();
+                this.saveStats();
+                
+                this.showExcuseRating();
+                this.showExcuseTags();
+            }
+
+            aiEnhanceExcuse() {
+                if (!currentExcuse) {
+                    this.showNotification('Generate an excuse first!', 'warning');
+                    return;
+                }
+
+                this.playClickSound();
+                
+                // Simulate AI enhancement
+                const enhancements = [
+                    ' Additionally, this situation involves multiple stakeholders who need to be consulted.',
+                    ' Furthermore, there are regulatory compliance requirements that must be addressed.',
+                    ' Moreover, the timeline for resolution depends on external factors beyond my control.',
+                    ' In addition, this matter requires coordination with third-party service providers.',
+                    ' Also, there are documentation requirements that must be completed before proceeding.'
+                ];
+                
+                const enhancement = enhancements[Math.floor(Math.random() * enhancements.length)];
+                const enhancedExcuse = currentExcuse + enhancement;
+                
+                currentExcuse = enhancedExcuse;
+                document.getElementById('excuseText').textContent = enhancedExcuse;
+                
+                this.showNotification('Excuse enhanced with AI!', 'success');
+                this.playSuccessSound();
+            }
+
+            randomCategory() {
+                const categories = Object.keys(excuseDatabase);
+                const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+                this.selectCategory(randomCategory);
+            }
+
+            viewFavorites() {
+                this.playClickSound();
+                
+                if (favorites.length === 0) {
+                    this.showNotification('No favorites yet! Add some excuses to your favorites.', 'warning');
+                    return;
+                }
+                
+                const favoritesHtml = favorites.map((favorite, index) => `
+                    <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-bottom: 1rem; background: var(--bg-card);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.75rem; color: var(--text-light); font-family: 'JetBrains Mono', monospace;">
+                                ${new Date(favorite.timestamp).toLocaleString()}
+                            </span>
+                            <span style="background: var(--primary); color: white; font-size: 0.625rem; font-weight: 600; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); text-transform: uppercase;">
+                                ${favorite.category}
+                            </span>
+                        </div>
+                        <div style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+                            ${favorite.text}
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button onclick="app.copyFavorite('${favorite.id}')" style="padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: var(--radius-md); background: var(--bg-card); color: var(--primary); font-size: 0.75rem; cursor: pointer;">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button onclick="app.removeFavorite('${favorite.id}')" style="padding: 0.5rem 1rem; border: 1px solid var(--error); border-radius: var(--radius-md); background: var(--bg-card); color: var(--error); font-size: 0.75rem; cursor: pointer;">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+
+                this.openModal('Your Favorite Excuses', favoritesHtml || '<p style="text-align: center; color: var(--text-light); padding: 2rem;">No favorites yet!</p>');
+            }
+
+            copyFavorite(id) {
+                const favorite = favorites.find(fav => fav.id == id);
+                if (favorite) {
+                    navigator.clipboard.writeText(favorite.text).then(() => {
+                        this.showNotification('Favorite copied to clipboard!', 'success');
+                        this.playSuccessSound();
+                    });
+                }
+            }
+
+            removeFavorite(id) {
+                if (confirm('Are you sure you want to remove this favorite?')) {
+                    favorites = favorites.filter(fav => fav.id != id);
+                    this.saveFavorites();
+                    stats.totalFavorites = favorites.length;
+                    this.updateStatsDisplay();
+                    this.saveStats();
+                    this.viewFavorites(); // Refresh the modal
+                    this.showNotification('Favorite removed successfully!', 'success');
+                }
+            }
+
+            exportHistory() {
+                this.playClickSound();
+                
+                if (history.length === 0 && favorites.length === 0) {
+                    this.showNotification('No data to export!', 'warning');
+                    return;
+                }
+                
+                const exportData = {
+                    exportDate: new Date().toISOString(),
+                    version: 'ExcuseForge v2.0',
+                    theme: currentTheme,
+                    totalItems: history.length,
+                    totalFavorites: favorites.length,
+                    history: history,
+                    favorites: favorites,
+                    stats: stats
+                };
+                
+                const dataStr = JSON.stringify(exportData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = `excuseforge-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+                
+                this.showNotification('Data exported successfully!', 'success');
+                this.playSuccessSound();
+            }
+
+            clearHistory() {
+                this.playClickSound();
+                
+                if (history.length === 0) {
+                    this.showNotification('History is already empty!', 'warning');
+                    return;
+                }
+                
+                if (confirm('Are you sure you want to clear all history? This cannot be undone.')) {
+                    history = [];
+                    this.updateHistoryDisplay();
+                    this.showNotification('History cleared successfully!', 'success');
+                    this.playSuccessSound();
+                }
+            }
+
+            bulkGenerate() {
+                this.playClickSound();
+                
+                const count = prompt('How many excuses would you like to generate? (1-20)', '5');
+                const num = parseInt(count);
+                
+                if (isNaN(num) || num < 1 || num > 20) {
+                    this.showNotification('Please enter a number between 1 and 20', 'error');
+                    return;
+                }
+                
+                const excuses = excuseDatabase[currentCategory];
+                const bulkExcuses = [];
+                
+                for (let i = 0; i < num; i++) {
+                    const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+                    bulkExcuses.push(randomExcuse);
+                }
+                
+                const bulkText = bulkExcuses.map((excuse, index) => `${index + 1}. ${excuse}`).join('\n\n');
+                
+                navigator.clipboard.writeText(bulkText).then(() => {
+                    this.showNotification(`${num} excuses generated and copied to clipboard!`, 'success');
+                    this.playSuccessSound();
+                    
+                    stats.totalGenerated += num;
+                    stats.totalCopied += num;
+                    this.updateStatsDisplay();
+                    this.saveStats();
+                });
+            }
+
+            showExcuseLibrary() {
+                this.playClickSound();
+                
+                const libraryHtml = Object.keys(excuseDatabase).map(category => {
+                    const categoryExcuses = excuseDatabase[category];
+                    const sampleExcuses = categoryExcuses.slice(0, 3);
+                    
+                    return `
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 1rem; text-transform: capitalize;">
+                                <i class="fas fa-${this.getCategoryIcon(category)}"></i> ${category} (${categoryExcuses.length} excuses)
+                            </h3>
+                            ${sampleExcuses.map(excuse => `
+                                <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); margin-bottom: 0.5rem; font-size: 0.875rem; line-height: 1.5; color: var(--text-secondary);">
+                                    ${excuse.substring(0, 100)}${excuse.length > 100 ? '...' : ''}
+                                </div>
+                            `).join('')}
+                            <button onclick="app.selectCategory('${category}'); app.closeModal();" style="padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: var(--radius-md); background: var(--primary); color: white; font-size: 0.75rem; cursor: pointer; margin-top: 0.5rem;">
+                                Use ${category} category
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+
+                this.openModal('Excuse Library', libraryHtml);
+            }
+
+            getCategoryIcon(category) {
+                const icons = {
+                    work: 'briefcase',
+                    academic: 'graduation-cap',
+                    social: 'users',
+                    health: 'heartbeat',
+                    tech: 'laptop-code',
+                    creative: 'palette',
+                    family: 'home',
+                    travel: 'plane'
+                };
+                return icons[category] || 'list';
+            }
+
+            showTrendingExcuses() {
+                this.playClickSound();
+                
+                // Simulate trending excuses
+                const trendingExcuses = [
+                    { text: "I'm experiencing unexpected technical difficulties with my primary workstation.", category: "work", uses: 1247 },
+                    { text: "My internet service provider is conducting emergency maintenance.", category: "work", uses: 892 },
+                    { text: "I have a family emergency that requires my immediate attention.", category: "family", uses: 756 },
+                    { text: "I'm not feeling well and don't want to risk getting others sick.", category: "social", uses: 634 },
+                    { text: "My laptop crashed and corrupted the file.", category: "academic", uses: 523 }
+                ];
+
+                const trendingHtml = trendingExcuses.map((excuse, index) => `
+                    <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-bottom: 1rem; background: var(--bg-card); position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1rem; background: var(--warning); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">
+                            #${index + 1} Trending
+                        </div>
+                        <div style="margin-bottom: 0.5rem;">
+                            <span style="background: var(--primary); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.625rem; text-transform: uppercase; margin-right: 0.5rem;">
+                                ${excuse.category}
+                            </span>
+                            <span style="color: var(--text-light); font-size: 0.75rem;">
+                                ${excuse.uses} uses this week
+                            </span>
+                        </div>
+                        <div style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+                            ${excuse.text}
+                        </div>
+                        <button onclick="app.useTrendingExcuse('${excuse.text}', '${excuse.category}')" style="padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: var(--radius-md); background: var(--primary); color: white; font-size: 0.75rem; cursor: pointer;">
+                            Use This Excuse
+                        </button>
+                    </div>
+                `).join('');
+
+                this.openModal('Trending Excuses', trendingHtml);
+            }
+
+            useTrendingExcuse(text, category) {
+                currentExcuse = text;
+                currentCategory = category;
+                
+                // Update category selection
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-category="${category}"]`).classList.add('active');
+                
+                // Update excuse display
+                const excuseElement = document.getElementById('excuseText');
+                const excuseDisplay = document.getElementById('excuseDisplay');
+                
+                excuseElement.textContent = text;
+                excuseElement.className = 'excuse-text';
+                excuseDisplay.classList.add('has-content');
+                
+                this.closeModal();
+                this.showNotification('Trending excuse applied!', 'success');
+                this.addToHistory(text);
+                
+                stats.totalGenerated++;
+                this.updateStatsDisplay();
+                this.saveStats();
+                
+                this.showExcuseRating();
+                this.showExcuseTags();
+            }
+
+            searchExcuses(query) {
+                if (!query.trim()) {
+                    // Reset category display
+                    document.querySelectorAll('.category-item').forEach(item => {
+                        item.style.display = 'flex';
+                    });
+                    return;
+                }
+
+                const searchResults = [];
+                Object.keys(excuseDatabase).forEach(category => {
+                    const excuses = excuseDatabase[category];
+                    const matches = excuses.filter(excuse => 
+                        excuse.toLowerCase().includes(query.toLowerCase())
+                    );
+                    if (matches.length > 0) {
+                        searchResults.push({ category, matches });
+                    }
+                });
+
+                // Update category display based on search
+                document.querySelectorAll('.category-item').forEach(item => {
+                    const category = item.dataset.category;
+                    const hasMatches = searchResults.some(result => result.category === category);
+                    item.style.display = hasMatches ? 'flex' : 'none';
+                    
+                    if (hasMatches) {
+                        const matchCount = searchResults.find(result => result.category === category).matches.length;
+                        const countElement = item.querySelector('.category-count');
+                        countElement.textContent = `${matchCount} matches`;
+                    }
+                });
+
+                if (searchResults.length === 0) {
+                    this.showNotification(`No excuses found for "${query}"`, 'warning');
+                }
+            }
+
+            showExcuseRating() {
+                const ratingSection = document.getElementById('excuseRating');
+                ratingSection.style.display = 'flex';
+                
+                // Reset stars
+                document.querySelectorAll('.star').forEach(star => {
+                    star.classList.remove('active');
+                });
+            }
+
+            rateExcuse(rating) {
+                if (!currentExcuse) return;
+                
+                // Update star display
+                document.querySelectorAll('.star').forEach((star, index) => {
+                    star.classList.toggle('active', index < rating);
+                });
+                
+                // Update rating text
+                const ratingTexts = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+                document.getElementById('ratingText').textContent = ratingTexts[rating];
+                
+                // Save rating
+                ratings.push({
+                    excuse: currentExcuse,
+                    rating: rating,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // Update average rating
+                const totalRating = ratings.reduce((sum, r) => sum + r.rating, 0);
+                stats.avgRating = (totalRating / ratings.length).toFixed(1);
+                this.updateStatsDisplay();
+                this.saveStats();
+                
+                this.showNotification(`Rated ${rating} stars!`, 'success');
+                this.playSuccessSound();
+            }
+
+            showExcuseTags() {
+                const tagsContainer = document.getElementById('excuseTags');
+                tagsContainer.style.display = 'flex';
+                
+                // Generate tags based on excuse content and category
+                const tags = this.generateExcuseTags();
+                
+                tagsContainer.innerHTML = tags.map(tag => 
+                    `<span class="tag">${tag}</span>`
+                ).join('');
+            }
+
+            generateExcuseTags() {
+                const tags = [];
+                
+                // Category-based tags
+                tags.push(currentCategory);
+                
+                // Length-based tags
+                tags.push(currentLength);
+                
+                // Mood-based tags
+                tags.push(currentMood);
+                
+                // Content-based tags
+                if (currentExcuse.toLowerCase().includes('technical')) tags.push('technical');
+                if (currentExcuse.toLowerCase().includes('family')) tags.push('family');
+                if (currentExcuse.toLowerCase().includes('medical')) tags.push('medical');
+                if (currentExcuse.toLowerCase().includes('emergency')) tags.push('emergency');
+                if (currentExcuse.toLowerCase().includes('urgent')) tags.push('urgent');
+                
+                return [...new Set(tags)]; // Remove duplicates
+            }
+
+            showHelp() {
+                this.playClickSound();
+                
+                const helpContent = `
+                    <div style="line-height: 1.6; color: var(--text-primary);">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">How to Use ExcuseForge</h3>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">🎯 Getting Started</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                                1. Select a category from the sidebar<br>
+                                2. Choose your preferred length and mood<br>
+                                3. Adjust complexity if needed<br>
+                                4. Click "Generate Excuse" or press Spacebar
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">⌨️ Keyboard Shortcuts</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                                • <strong>Spacebar</strong>: Generate new excuse<br>
+                                • <strong>Ctrl+C</strong>: Copy current excuse<br>
+                                • <strong>Ctrl+R</strong>: Regenerate excuse<br>
+                                • <strong>Ctrl+D</strong>: Toggle dark mode<br>
+                                • <strong>Escape</strong>: Close modals
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">✨ Features</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                                • <strong>8 Categories</strong>: Work, Academic, Social, Health, Tech, Creative, Family, Travel<br>
+                                • <strong>4 Lengths</strong>: Short, Medium, Long, Detailed<br>
+                                • <strong>4 Moods</strong>: Professional, Casual, Urgent, Apologetic<br>
+                                • <strong>Complexity Control</strong>: Simple to Complex excuses<br>
+                                • <strong>Dark Mode</strong>: Beautiful dark theme support<br>
+                                • <strong>AI Enhancement</strong>: Make excuses more sophisticated<br>
+                                • <strong>Translation</strong>: Translate to 9 languages<br>
+                                • <strong>Favorites</strong>: Save your best excuses<br>
+                                • <strong>Analytics</strong>: Track your usage patterns
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">🌙 Dark Mode</h4>
+                            <p style="color: var(--text-secondary);">
+                                Toggle between light and dark themes using the moon/sun icon in the header or press Ctrl+D. Your preference is automatically saved.
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">💡 Tips</h4>
+                            <p style="color: var(--text-secondary);">
+                                • Rate excuses to help improve recommendations<br>
+                                • Use search to find specific types of excuses<br>
+                                • Check trending excuses for popular options<br>
+                                • Export your data to keep a backup<br>
+                                • Customize excuses to fit your specific situation
+                            </p>
+                        </div>
+                    </div>
+                `;
+                
+                this.openModal('Help & Guide', helpContent);
+            }
+
+            shareApp() {
+                this.playClickSound();
+                
+                const shareText = 'Check out ExcuseForge - the ultimate professional excuse generator! Generate professional excuses for any situation with beautiful dark mode support!';
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'ExcuseForge - Ultimate Professional Excuse Generator',
+                        text: shareText,
+                        url: window.location.href
+                    }).then(() => {
+                        this.showNotification('App shared successfully!', 'success');
+                        this.playSuccessSound();
+                    }).catch(() => {
+                        this.copyShareText(shareText);
+                    });
+                } else {
+                    this.copyShareText(shareText);
+                }
+            }
+
+            copyShareText(text) {
+                navigator.clipboard.writeText(text + ' ' + window.location.href).then(() => {
+                    this.showNotification('Share text copied to clipboard!', 'success');
+                    this.playSuccessSound();
+                });
+            }
+
+            addToHistory(excuse) {
+                const timestamp = new Date();
+                const historyItem = {
+                    time: timestamp.toLocaleTimeString(),
+                    date: timestamp.toLocaleDateString(),
+                    text: excuse,
+                    category: currentCategory,
+                    length: currentLength,
+                    mood: currentMood,
+                    complexity: currentComplexity,
+                    id: Date.now()
+                };
+                
+                history.unshift(historyItem);
+                
+                // Keep only last 100 items
+                if (history.length > 100) {
+                    history = history.slice(0, 100);
+                }
+                
+                this.updateHistoryDisplay();
+            }
+
+            updateHistoryDisplay() {
+                const container = document.getElementById('historyContainer');
+                
+                if (history.length === 0) {
+                    container.innerHTML = `
+                        <div class="history-item">
+                            <div class="history-header">
+                                <div class="history-time">Welcome</div>
+                                <div class="history-category">System</div>
+                            </div>
+                            <div class="history-text">
+                                Welcome to ExcuseForge! Generate unlimited professional excuses with our advanced features and beautiful dark mode support.
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                // Show only last 10 items in the display
+                const displayHistory = history.slice(0, 10);
+                
+                displayHistory.forEach((item, index) => {
+                    const historyElement = document.createElement('div');
+                    historyElement.className = 'history-item';
+                    historyElement.innerHTML = `
+                        <div class="history-header">
+                            <div class="history-time">${item.time}</div>
+                            <div class="history-category">${item.category}</div>
+                        </div>
+                        <div class="history-text">${item.text}</div>
+                    `;
+                    
+                    // Add click to copy functionality
+                    historyElement.addEventListener('click', () => {
+                        navigator.clipboard.writeText(item.text).then(() => {
+                            this.showNotification('History item copied!', 'success');
+                            this.playClickSound();
+                        });
+                    });
+                    
+                    container.appendChild(historyElement);
+                });
+            }
+
+            updateStatsDisplay() {
+                const statsElements = {
+                    totalGenerated: document.getElementById('totalGenerated'),
+                    totalCopied: document.getElementById('totalCopied'),
+                    totalFavorites: document.getElementById('totalFavorites'),
+                    currentStreak: document.getElementById('currentStreak'),
+                    todayCount: document.getElementById('todayCount'),
+                    weekCount: document.getElementById('weekCount'),
+                    avgRating: document.getElementById('avgRating'),
+                    topCategory: document.getElementById('topCategory')
+                };
+                
+                Object.keys(statsElements).forEach(key => {
+                    const element = statsElements[key];
+                    if (element) {
+                        element.textContent = stats[key];
+                    }
+                });
+            }
+
+            updateDailyCounter() {
+                document.getElementById('dailyCounter').textContent = stats.todayCount;
+            }
+
+            openModal(title, content) {
+                document.getElementById('modalTitle').textContent = title;
+                document.getElementById('modalBody').innerHTML = content;
+                document.getElementById('modalOverlay').classList.add('open');
+            }
+
+            closeModal() {
+                document.getElementById('modalOverlay').classList.remove('open');
+            }
+
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                const iconMap = {
+                    success: 'fas fa-check-circle',
+                    error: 'fas fa-exclamation-circle',
+                    warning: 'fas fa-exclamation-triangle'
+                };
+                
+                notification.innerHTML = `
+                    <i class="${iconMap[type]} notification-icon"></i>
+                    <span class="notification-text">${message}</span>
+                `;
+                notification.className = `notification ${type}`;
+                notification.classList.add('show');
+                
+                // Auto-hide after 4 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 4000);
+            }
+
+            saveStats() {
+                localStorage.setItem('excuseforge_stats', JSON.stringify(stats));
+            }
+
+            loadStats() {
+                const savedStats = localStorage.getItem('excuseforge_stats');
+                if (savedStats) {
+                    stats = { ...stats, ...JSON.parse(savedStats) };
+                }
+            }
+
+            saveFavorites() {
+                localStorage.setItem('excuseforge_favorites', JSON.stringify(favorites));
+            }
+
+            loadFavorites() {
+                const savedFavorites = localStorage.getItem('excuseforge_favorites');
+                if (savedFavorites) {
+                    favorites = JSON.parse(savedFavorites);
+                }
+            }
+        }
+
+        // Initialize the application
+        let app;
+        document.addEventListener('DOMContentLoaded', () => {
+            app = new ExcuseForge();
+        });
+    </script>
+</body>
+</html>
