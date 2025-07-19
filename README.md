@@ -77,6 +77,7 @@ Here’s what makes our app spicy:
 - 🧹 **Clear History** – Because what happens in Excuse Generator stays in Excuse Generator.
 - 📦 **Bulk Generation** – Why make one excuse when you can make twenty?
 - 🔥 **Trending Excuses** – See what the excuse community is up to. Get inspired.
+- 🌓 Light/Dark Mode – Whether you’re crafting excuses in the dark or light, we’ve got your vibe covered.
 
 ---
 
