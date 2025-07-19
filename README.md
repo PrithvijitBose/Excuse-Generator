@@ -97,11 +97,6 @@ at least we’ll give you a 10/10 *reason* to smile. 😄
 
 ---
 
-## 📸 Screenshot Preview
-
-> *Insert your funniest UI screenshot here*
-
----
 
 ## 🥺 Final Words
 
@@ -114,4 +109,6 @@ Now go ahead. Click, generate, and excuse yourself like a pro.
 
 ---
 
-**Made with 😇 by Team Excuse Engineers** No Our Team name is Solo Levelers (seriously)
+**Made with 😇 by Team Excuse Engineers** 
+
+No Our Team name is Solo Levelers (seriously)
